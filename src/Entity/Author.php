@@ -64,7 +64,7 @@ class Author
     {
         if (!$this->books->contains($books)) {
             $this->books[] = $books;
-            $title->setAuthor($this);
+            $books->setAuthor($this);
         }
 
         return $this;
@@ -72,11 +72,11 @@ class Author
 
     public function removeBooks(Book $books): self
     {
-        if ($this->title->contains($books)) {
-            $this->title->removeElement($books);
+        if ($this->books->contains($books)) {
+            $this->books->removeElement($books);
             // set the owning side to null (unless already changed)
-            if ($title->getAuthor() === $this) {
-                $title->setAuthor(null);
+            if ($books->getAuthor() === $this) {
+                $books->setAuthor(null);
             }
         }
 
